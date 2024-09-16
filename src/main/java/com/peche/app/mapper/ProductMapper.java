@@ -15,7 +15,7 @@ public interface ProductMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "nombre")
     @Mapping(target = "brand", source = "marca")
-    //@Mapping(target = "category", source = "categoria")
+    @Mapping(target = "category", source = "categoria")
     @Mapping(target = "price", source = "precio")
     @Mapping(target = "supermarket", source = "supermercado")
     @Mapping(target = "image", source = "imagen")
