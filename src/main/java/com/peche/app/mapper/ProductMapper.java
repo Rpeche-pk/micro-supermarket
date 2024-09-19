@@ -20,6 +20,7 @@ public interface ProductMapper {
     @Mapping(target = "supermarket", source = "supermercado")
     @Mapping(target = "image", source = "imagen")
     @Mapping(target = "url", source = "url")
+    @Mapping(target = "processDate", source = "fecha_proceso")
     ProductDto mapToProduct(Product product);
 
 

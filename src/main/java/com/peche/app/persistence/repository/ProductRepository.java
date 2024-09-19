@@ -6,11 +6,11 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface ProductRepository extends MongoRepository<Product, String> {
-    List<Product> findByMarcaIsLikeIgnoreCase(String brand);
+public interface ProductRepository<T> {
+    List<T> findByMarcaIsLikeIgnoreCase(String brand);
 
     @Query("{ 'categoria': { $regex: ?0, $options: 'i' } }")
-    List<Product> findByCategoriaIgnoreCase(String category);
+    List<T> findByCategoriaIgnoreCase(String category);
     @Query("{ 'supermercado': { $regex: ?0, $options: 'i' } }")
-    List<Product> findBySupermercadoIgnoreCase(String supermarket);
+    List<T> findBySupermercadoIgnoreCase(String supermarket);
 }

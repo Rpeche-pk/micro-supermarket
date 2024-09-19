@@ -4,15 +4,22 @@ public class GenConstant {
     private GenConstant() {
     }
 
+    /*
+     * CONSTANTS FOR THE NAME COLLECTIONS
+     */
+    public static final String COLLECTION_PLAZA_VEA = "PLAZAVEA";
+    public static final String COLLECTION_TOTTUS = "TOTTUS";
+    public static final String COLLECTION_METRO = "METRO";
+
     /**
      * CONSTANTS FOR THE API
      */
     public static final String VERSION_API = "/v1/api";
     public static final String VERSION_API_PRODUCTS = VERSION_API + "/products";
-    public static final String ALL_PRODUCTS = "/all";
+    public static final String ALL_PRODUCTS = "/all/{supermarket}";
     public static final String PRODUCT_BY_BRAND = "/{brand}";
     public static final String PRODUCT_BY_CATEGORY = "/category/{category}";
-    public static final String PRODUCT_BY_SUPERMARKET = "/supermarket/{supermarket}";
+    public static final String ALL_PRODUCTS_SUPERMARKET = "/supermarket/";
 
     /*
      * CONSTANTS FOR THE EXCEPTIONS
@@ -20,7 +27,7 @@ public class GenConstant {
     public static final String EXCEPTION_ILLEGAL_BRAND = "brand is number or empty";
     public static final String EXCEPTION_ILLEGAL_ARG = "name supermarket is number or empty";
     public static final String EXCEPTION_ILLEGAL_CATEGORY = "category is number or empty";
-    public static final String EXCEPTION_ILLEGAL_SUPERMARKET= "The supermarket entered does not exist. You can only enter [TOTTUS, METRO AND PLAZA VEA]";
+    public static final String EXCEPTION_ILLEGAL_SUPERMARKET= "The supermarket entered does not exist. You can only enter [TOTTUS, METRO AND PLAZAVEA]";
 
 
 

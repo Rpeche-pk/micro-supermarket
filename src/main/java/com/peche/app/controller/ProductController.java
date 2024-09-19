@@ -22,9 +22,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping(ALL_PRODUCTS)
-    public ResponseEntity<?> getAllProducts() {
+    public ResponseEntity<?> getAllProductsByMarket(@PathVariable String supermarket) {
         log.info(GenConstant.LOGGER_APP_INIT);
-        var products = productService.getAllProducts();
+        var products = productService.getAllProductsByMarket(supermarket);
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
@@ -45,10 +45,10 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @GetMapping(PRODUCT_BY_SUPERMARKET)
-    public ResponseEntity<?> getProductsBySupermarket(@PathVariable String supermarket) {
+    @GetMapping(ALL_PRODUCTS_SUPERMARKET)
+    public ResponseEntity<?> getAllProducts() {
         log.info(GenConstant.LOGGER_APP_INIT);
-        var products = productService.getProductsBySupermarket(supermarket);
+        var products = productService.getAllProducts();
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }

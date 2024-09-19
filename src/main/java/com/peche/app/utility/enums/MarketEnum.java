@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Arrays;
 
 @Getter
-public enum MarketEnums {
+public enum MarketEnum {
 
     TOTTUS("Tottus"),
     METRO("Metro"),
@@ -13,12 +13,12 @@ public enum MarketEnums {
 
     private final String market;
 
-    MarketEnums(String market) {
+    MarketEnum(String market) {
         this.market = market;
     }
 
     public static boolean exists(String type) {
-        return Arrays.stream(MarketEnums.values())
+        return Arrays.stream(MarketEnum.values())
                 .anyMatch(market -> market.getMarket().equalsIgnoreCase(type));
     }
 }
