@@ -56,5 +56,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(DataSyncException.class)
+    public ProblemDetail handleDataSyncException(DataSyncException ex, HttpServletRequest request) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT, ex.getMessage()
+        );
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+        problemDetail.setProperty("date", LocalDateTime.now());
+        problemDetail.setProperty("cause", ex.getCause());
+        return problemDetail;
+    }
+
 
 }

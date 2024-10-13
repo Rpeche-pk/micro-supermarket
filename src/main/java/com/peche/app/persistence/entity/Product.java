@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 
@@ -24,5 +24,5 @@ public class Product {
     private String supermercado;
     private String url;
     private String categoria;
-    private LocalDateTime fecha_proceso;
+    private LocalDate fecha_proceso;
 }

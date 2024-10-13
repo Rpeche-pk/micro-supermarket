@@ -1,7 +1,13 @@
 package com.peche.app.mapper;
 
-import com.peche.app.dtos.response.ProductDto;
+import com.peche.app.dto.response.ProductDto;
 import com.peche.app.persistence.entity.Product;
+import com.peche.app.persistence.entity.ProductMetro;
+import com.peche.app.persistence.entity.ProductTottus;
+import com.peche.app.persistence.entity.ProductVea;
+import com.peche.app.persistence.entity.elastic.ProductMetroElastic;
+import com.peche.app.persistence.entity.elastic.ProductTottusElastic;
+import com.peche.app.persistence.entity.elastic.ProductVeaElastic;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -25,5 +31,9 @@ public interface ProductMapper {
 
 
     List<ProductDto> mapToProductDtoList(List<Product> products);
+
+    ProductVeaElastic mapToProductVeaElastic(ProductVea productDto);
+    ProductMetroElastic mapToProductMetroElastic(ProductMetro productDto);
+    ProductTottusElastic mapToProductTottusElastic(ProductTottus productDto);
 
 }

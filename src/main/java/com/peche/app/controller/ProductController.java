@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.peche.app.constants.GenConstant.*;
 
@@ -25,14 +22,11 @@ public class ProductController {
     public ResponseEntity<?> getAllProductsByMarket(@PathVariable String supermarket) {
         log.info(GenConstant.LOGGER_APP_INIT);
         var products = productService.getAllProductsByMarket(supermarket);
-        log.info(GenConstant.LOGGER_APP_COMPLETED);
-        return new ResponseEntity<>(products, HttpStatus.OK);
-    }
 
-    @GetMapping(PRODUCT_BY_BRAND)
-    public ResponseEntity<?> getProductsByBrand(@PathVariable String brand) {
-        log.info(GenConstant.LOGGER_APP_INIT);
-        var products = productService.getProductsByBrand(brand);
+        if (products.isEmpty()) {
+            log.warn(GenConstant.LOGGER_APP_FAIL);
+            return new ResponseEntity<>("Not found data",HttpStatus.NO_CONTENT);
+        }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }

@@ -1,4 +1,4 @@
-package com.peche.app.dtos.response;
+package com.peche.app.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -6,7 +6,7 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -27,6 +27,6 @@ public class ProductDto implements Serializable {
     private String supermarket;
     private String url;
     private String category;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime processDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate processDate;
 }

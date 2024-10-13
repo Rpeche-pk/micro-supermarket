@@ -8,8 +8,12 @@ public class GenConstant {
      * CONSTANTS FOR THE NAME COLLECTIONS
      */
     public static final String COLLECTION_PLAZA_VEA = "PLAZAVEA";
-    public static final String COLLECTION_TOTTUS = "TOTTUS";
+    public static final String COLLECTION_TOTTUS = "TOTTUSS";
     public static final String COLLECTION_METRO = "METRO";
+
+    public static final String COLLECTION_ELASTIC_PLAZA_VEA = "elastic_plazavea";
+    public static final String COLLECTION_ELASTIC_TOTTUS = "elastic_tottuss";
+    public static final String COLLECTION_ELASTIC_METRO = "elastic_metro";
 
     /**
      * CONSTANTS FOR THE API
@@ -17,9 +21,12 @@ public class GenConstant {
     public static final String VERSION_API = "/v1/api";
     public static final String VERSION_API_PRODUCTS = VERSION_API + "/products";
     public static final String ALL_PRODUCTS = "/all/{supermarket}";
-    public static final String PRODUCT_BY_BRAND = "/{brand}";
+    public static final String PRODUCT_BY_QUERY = "/";
     public static final String PRODUCT_BY_CATEGORY = "/category/{category}";
     public static final String ALL_PRODUCTS_SUPERMARKET = "/supermarket/";
+
+    public static final String API_ELASTIC_SEARCH = VERSION_API + "/elastic-data";
+    public static final String API_URI_SYNC = "/sync";
 
     /*
      * CONSTANTS FOR THE EXCEPTIONS

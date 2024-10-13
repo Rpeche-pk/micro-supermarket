@@ -1,7 +1,5 @@
 package com.peche.app.persistence.repository;
 
-import com.peche.app.persistence.entity.Product;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
