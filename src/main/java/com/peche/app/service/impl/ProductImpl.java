@@ -1,7 +1,7 @@
 package com.peche.app.service.impl;
 
 import com.peche.app.dto.response.ProductDto;
-import com.peche.app.exception.IllegalBodyException;
+import com.peche.app.exception.IllegalParameterException;
 import com.peche.app.exception.NotFoundException;
 import com.peche.app.mapper.ProductMapper;
 import com.peche.app.persistence.entity.Product;
@@ -42,7 +42,7 @@ public class ProductImpl implements ProductService {
 
         if (supermarket == null || supermarket.isBlank() || Pattern.matches(".*\\d.*", supermarket)) {
             log.error("{} - {} - {}", LOGGER_SRV_FAIL_NAME_ERROR, Thread.currentThread().getStackTrace()[1].getMethodName(), EXCEPTION_ILLEGAL_ARG);
-            throw new IllegalBodyException(EXCEPTION_ILLEGAL_ARG, supermarket);
+            throw new IllegalParameterException(EXCEPTION_ILLEGAL_ARG, supermarket);
         }
 
         if (!CollectionEnum.exists(supermarket.strip().toUpperCase())) {
@@ -80,7 +80,7 @@ public class ProductImpl implements ProductService {
 
         if (category == null || category.isBlank() || Pattern.matches(".*\\d.*", category)) {
             log.warn("{} - {} -{}", LOGGER_APP_FAIL_NAME_ERROR, nameMethod, EXCEPTION_ILLEGAL_BRAND);
-            throw new IllegalBodyException(EXCEPTION_ILLEGAL_BRAND, category);
+            throw new IllegalParameterException(EXCEPTION_ILLEGAL_BRAND, category);
         }
 
         var regex = utility.searchRegex(category);

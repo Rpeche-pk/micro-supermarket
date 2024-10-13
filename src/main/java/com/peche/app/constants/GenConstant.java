@@ -27,11 +27,15 @@ public class GenConstant {
 
     public static final String API_ELASTIC_SEARCH = VERSION_API + "/elastic-data";
     public static final String API_URI_SYNC = "/sync";
+    public static final String SEARCH_PRODUCT_VEA = "/plazavea";
+    public static final String SEARCH_PRODUCT_TOTTUS = "/tottus";
+    public static final String SEARCH_PRODUCT_METRO = "/metro";
 
     /*
      * CONSTANTS FOR THE EXCEPTIONS
      */
     public static final String EXCEPTION_ILLEGAL_BRAND = "brand is number or empty";
+    public static final String EXCEPTION_ILLEGAL_PARAMETERS = "The product name or brand must not be empty or contain white spaces.";
     public static final String EXCEPTION_ILLEGAL_ARG = "name supermarket is number or empty";
     public static final String EXCEPTION_ILLEGAL_CATEGORY = "category is number or empty";
     public static final String EXCEPTION_ILLEGAL_SUPERMARKET= "The supermarket entered does not exist. You can only enter [TOTTUS, METRO AND PLAZAVEA]";
@@ -42,7 +46,7 @@ public class GenConstant {
      * CONSTANTS FOR THE LOGGER
      */
     public static final String LOGGER_APP_INIT = "[Controller] - << Execution initialized >>";
-    public static final String LOGGER_APP_INIT_NAME = "[Controller] - << Execution initialized >> --> : %1$s";
+    public static final String LOGGER_APP_INIT_NAME = "[Controller] - << Execution initialized >> --> : {}";
     public static final String LOGGER_APP_COMPLETED = "[Controller] - << Execution completed >>";
     public static final String LOGGER_APP_COMPLETED_NAME = "[Controller] - << Execution completed >> --> : %1$s";
     public static final String LOGGER_APP_FAIL = "[Controller] - << Execution failed >>";

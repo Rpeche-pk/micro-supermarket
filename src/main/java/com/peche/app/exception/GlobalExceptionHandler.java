@@ -34,8 +34,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler(IllegalBodyException.class)
-    public ProblemDetail handleIllegalBodyException(IllegalBodyException ex, HttpServletRequest request) {
+    @ExceptionHandler(IllegalParameterException.class)
+    public ProblemDetail handleIllegalBodyException(IllegalParameterException ex, HttpServletRequest request) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.BAD_REQUEST, ex.getMessage()
         );

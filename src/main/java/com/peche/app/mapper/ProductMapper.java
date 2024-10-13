@@ -36,4 +36,8 @@ public interface ProductMapper {
     ProductMetroElastic mapToProductMetroElastic(ProductMetro productDto);
     ProductTottusElastic mapToProductTottusElastic(ProductTottus productDto);
 
+    ProductDto mapToProductVeaDto(ProductVeaElastic productDto);
+    ProductDto mapToProductMetroDto(ProductMetroElastic productDto);
+    ProductDto mapToProductTottusDto(ProductTottusElastic productDto);
+
 }
