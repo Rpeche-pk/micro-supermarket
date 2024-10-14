@@ -21,7 +21,7 @@ public interface ElasticRepository <T> {
                   {
                     "multi_match": {
                       "query": "?0",
-                      "fields": ["name^2", "category"],
+                      "fields": ["name^2", "category^1.5"],
                       "type": "best_fields",
                       "operator": "and",
                       "fuzziness": "AUTO",
@@ -33,7 +33,8 @@ public interface ElasticRepository <T> {
                       "brand": {
                         "query": "?1",
                         "operator": "and",
-                        "analyzer": "custom_analyzer"
+                        "analyzer": "custom_analyzer",
+                        "boost": 2.0
                       }
                     }
                   }

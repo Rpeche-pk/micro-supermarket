@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ElasticVeaRepository extends ElasticRepository<ProductVeaElastic>, ElasticsearchRepository<ProductVeaElastic, String> {
+
 }

@@ -82,7 +82,7 @@ public class ElasticSearchImpl implements ElasticSearchService {
     }
 
     private void validateSearchParams(String nameProduct, String brand) {
-        if (StringUtils.hasLength(nameProduct) && StringUtils.hasLength(brand)) {
+        if (StringUtils.containsWhitespace(nameProduct) && StringUtils.containsWhitespace(brand)) {
             log.warn("{} - {} - {}", LOGGER_SRV_FAIL, "validateSearchParams", EXCEPTION_ILLEGAL_PARAMETERS);
             throw new IllegalParameterException(EXCEPTION_ILLEGAL_PARAMETERS, nameProduct, brand);
         }

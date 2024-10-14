@@ -10,7 +10,6 @@ import com.peche.app.persistence.repository.elastic.ElasticTottusRepository;
 import com.peche.app.persistence.repository.elastic.ElasticVeaRepository;
 import com.peche.app.service.DataSyncService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

@@ -22,6 +22,7 @@ public class ProductVeaElastic {
     @Id
     private String id;
 
+    @Field(type = FieldType.Keyword)
     private String image;
     @Field(type = FieldType.Text, analyzer = "custom_analyzer")
     private String brand;
