@@ -35,12 +35,41 @@ public class ElasticSearchConfig {
     }
 
     private Map<String, Object> getIndexSettings() {
-        return Map.of(
+        /*return Map.of(
                 "analysis", Map.of(
                         "analyzer", Map.of(
                                 "custom_analyzer", Map.of(
                                         "type", "custom",
                                         "tokenizer", "standard",
+                                        "filter", List.of("lowercase", "asciifolding", "spanish_stop", "spanish_stemmer")
+                                )
+                        ),
+                        "filter", Map.of(
+                                "spanish_stop", Map.of(
+                                        "type", "stop",
+                                        "stopwords", "_spanish_"
+                                ),
+                                "spanish_stemmer", Map.of(
+                                        "type", "stemmer",
+                                        "language", "light_spanish"
+                                )
+                        )
+                )
+        );*/
+        return Map.of(
+                "analysis", Map.of(
+                        "tokenizer", Map.of(
+                                "edge_ngram_tokenizer", Map.of(
+                                        "type", "edge_ngram",
+                                        "min_gram", 1,
+                                        "max_gram", 25,
+                                        "token_chars", List.of("letter", "digit")
+                                )
+                        ),
+                        "analyzer", Map.of(
+                                "custom_analyzer", Map.of(
+                                        "type", "custom",
+                                        "tokenizer", "edge_ngram_tokenizer", // Usamos edge_ngram para marcas
                                         "filter", List.of("lowercase", "asciifolding", "spanish_stop", "spanish_stemmer")
                                 )
                         ),

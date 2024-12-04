@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 import static com.peche.app.constants.GenConstant.*;
 
 @RequestMapping(API_ELASTIC_SEARCH)
@@ -28,8 +30,9 @@ public class ElasticController {
         log.info(GenConstant.LOGGER_APP_INIT);
         var products = elasticSearchService.searchProductsByPlazaVea(nameProduct, brand);
         if (products.isEmpty()) {
+            String message = "Not found data ".concat(nameProduct).concat(" ").concat(brand);
             log.warn(GenConstant.LOGGER_APP_FAIL);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(Map.of("data", message),HttpStatus.NOT_FOUND);
         }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
@@ -38,10 +41,12 @@ public class ElasticController {
     @GetMapping(SEARCH_PRODUCT_TOTTUS)
     public ResponseEntity<?> getProductsTottus(@RequestParam String nameProduct, @RequestParam String brand) {
         log.info(GenConstant.LOGGER_APP_INIT);
+        String method = Thread.currentThread().getStackTrace()[1].getMethodName();
         var products = elasticSearchService.searchProductsByTottus(nameProduct, brand);
         if (products.isEmpty()) {
-            log.warn(GenConstant.LOGGER_APP_FAIL);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            log.warn(GenConstant.LOGGER_APP_FAIL, "METHOD: ".concat(method));
+            String message = "Not found data ".concat(nameProduct).concat(" ").concat(brand);
+            return new ResponseEntity<>(Map.of("data",message),HttpStatus.NOT_FOUND);
         }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
@@ -53,7 +58,8 @@ public class ElasticController {
         var products = elasticSearchService.searchProductsByMetro(nameProduct, brand);
         if (products.isEmpty()) {
             log.warn(GenConstant.LOGGER_APP_FAIL);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            String message = "Not found data ".concat(nameProduct).concat(" ").concat(brand);
+            return new ResponseEntity<>(Map.of("data",message),HttpStatus.NOT_FOUND);
         }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);

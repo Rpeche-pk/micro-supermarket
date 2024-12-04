@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 import static com.peche.app.constants.GenConstant.*;
 
 @RequestMapping(VERSION_API_PRODUCTS)
@@ -25,7 +27,7 @@ public class ProductController {
 
         if (products.isEmpty()) {
             log.warn(GenConstant.LOGGER_APP_FAIL);
-            return new ResponseEntity<>("Not found data",HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(Map.of("data", "Not found data"),HttpStatus.NO_CONTENT);
         }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);

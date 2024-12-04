@@ -34,7 +34,8 @@ public interface ElasticRepository <T> {
                         "query": "?1",
                         "operator": "and",
                         "analyzer": "custom_analyzer",
-                        "boost": 2.0
+                        "boost": 2.0,
+                        "fuzziness": "AUTO"
                       }
                     }
                   }
