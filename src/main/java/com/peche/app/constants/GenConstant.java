@@ -24,6 +24,7 @@ public class GenConstant {
     public static final String PRODUCT_BY_QUERY = "/";
     public static final String PRODUCT_BY_CATEGORY = "/category/{category}";
     public static final String ALL_PRODUCTS_SUPERMARKET = "/supermarket/";
+    public static final String CATEGORIES_BY_SUPERMARKET = "/categories";
 
     public static final String API_ELASTIC_SEARCH = VERSION_API + "/elastic-data";
     public static final String API_URI_SYNC = "/sync";
@@ -45,11 +46,11 @@ public class GenConstant {
     /**
      * CONSTANTS FOR THE LOGGER
      */
-    public static final String LOGGER_APP_INIT = "[Controller] - << Execution initialized >>";
+    public static final String LOGGER_APP_INIT = "[Controller] - << Execution initialized >> {}";
     public static final String LOGGER_APP_INIT_NAME = "[Controller] - << Execution initialized >> --> : {}";
-    public static final String LOGGER_APP_COMPLETED = "[Controller] - << Execution completed >>";
+    public static final String LOGGER_APP_COMPLETED = "[Controller] - << Execution completed >> {}";
     public static final String LOGGER_APP_COMPLETED_NAME = "[Controller] - << Execution completed >> --> : %1$s";
-    public static final String LOGGER_APP_FAIL = "[Controller] - << Execution failed >>";
+    public static final String LOGGER_APP_FAIL = "[Controller] - << Execution failed >> {}";
     public static final String LOGGER_APP_FAIL_NAME = "[Controller] - << Execution failed >> --> : %1$s";
     public static final String LOGGER_APP_FAIL_NAME_ERROR = "[Controller] - << Execution failed >> --> : %1$s --> Message: %2$s";
     public static final String LOGGER_SRV_INIT = "[Services] - << Execution initialized >>";

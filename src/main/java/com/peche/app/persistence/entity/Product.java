@@ -8,8 +8,6 @@ import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
-
-
 @Getter
 @Setter
 @AllArgsConstructor

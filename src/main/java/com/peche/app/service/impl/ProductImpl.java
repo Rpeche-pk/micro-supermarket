@@ -1,5 +1,6 @@
 package com.peche.app.service.impl;
 
+import com.peche.app.dto.response.MarketCategoryDto;
 import com.peche.app.dto.response.ProductDto;
 import com.peche.app.exception.IllegalParameterException;
 import com.peche.app.exception.NotFoundException;
@@ -33,7 +34,6 @@ public class ProductImpl implements ProductService {
     private final ProductMapper productMapper;
     private final Utility utility;
     private final MongoTemplate mongoTemplate;
-
 
     @Override
     public List<ProductDto> getAllProductsByMarket(String supermarket) {
@@ -129,5 +129,26 @@ public class ProductImpl implements ProductService {
         log.info("[DETAILS] TOTAL PRODUCTS FOR THE TOTTUS SUPERMARKET {}", tottusRepository.count());
         log.info("{} - {}", LOGGER_SRV_COMPLETED_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
         return products;
+    }
+
+    @Override
+    public List<MarketCategoryDto> getCategoriesBySupermarket() {
+        List<MarketCategoryDto> categories = new ArrayList<>();
+
+        categories.addAll(metroRepository.findCategoryBySupermarket()
+                .stream()
+                .map(productMapper::mapToMarketCategoryDto)
+                .toList());
+        categories.addAll(tottusRepository.findCategoryBySupermarket()
+                .stream()
+                .map(productMapper::mapToMarketCategoryDto)
+                .toList());
+        categories.addAll(plazaVeaRepository.findCategoryBySupermarket()
+                .stream()
+                .map(productMapper::mapToMarketCategoryDto)
+                .toList());
+
+        return categories;
+
     }
 }

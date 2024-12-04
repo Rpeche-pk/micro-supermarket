@@ -69,7 +69,7 @@ public class ElasticSearchConfig {
                         "analyzer", Map.of(
                                 "custom_analyzer", Map.of(
                                         "type", "custom",
-                                        "tokenizer", "edge_ngram_tokenizer", // Usamos edge_ngram para marcas
+                                        "tokenizer", "edge_ngram_tokenizer",
                                         "filter", List.of("lowercase", "asciifolding", "spanish_stop", "spanish_stemmer")
                                 )
                         ),

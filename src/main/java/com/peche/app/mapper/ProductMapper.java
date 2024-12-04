@@ -1,10 +1,8 @@
 package com.peche.app.mapper;
 
+import com.peche.app.dto.response.MarketCategoryDto;
 import com.peche.app.dto.response.ProductDto;
-import com.peche.app.persistence.entity.Product;
-import com.peche.app.persistence.entity.ProductMetro;
-import com.peche.app.persistence.entity.ProductTottus;
-import com.peche.app.persistence.entity.ProductVea;
+import com.peche.app.persistence.entity.*;
 import com.peche.app.persistence.entity.elastic.ProductMetroElastic;
 import com.peche.app.persistence.entity.elastic.ProductTottusElastic;
 import com.peche.app.persistence.entity.elastic.ProductVeaElastic;
@@ -31,6 +29,12 @@ public interface ProductMapper {
 
 
     List<ProductDto> mapToProductDtoList(List<Product> products);
+
+    List<MarketCategoryDto> mapToMarketCategoryDtoList(List<MarketCategory> marketCategories);
+
+    @Mapping(target = "supermarket", source = "supermercado")
+    @Mapping(target = "category", source = "categoria")
+    MarketCategoryDto mapToMarketCategoryDto(MarketCategory marketCategory);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "nombre")
@@ -64,6 +68,9 @@ public interface ProductMapper {
     @Mapping(target = "url", source = "url")
     @Mapping(target = "processDate", source = "fecha_proceso")
     ProductTottusElastic mapToProductTottusElastic(ProductTottus productDto);
+
+
+
 
     ProductDto mapToProductVeaDto(ProductVeaElastic productDto);
     ProductDto mapToProductMetroDto(ProductMetroElastic productDto);

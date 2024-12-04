@@ -27,7 +27,7 @@ public class ProductController {
 
         if (products.isEmpty()) {
             log.warn(GenConstant.LOGGER_APP_FAIL);
-            return new ResponseEntity<>(Map.of("data", "Not found data"),HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(Map.of("data", "Not found data"),HttpStatus.NOT_FOUND);
         }
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
@@ -47,6 +47,19 @@ public class ProductController {
         var products = productService.getAllProducts();
         log.info(GenConstant.LOGGER_APP_COMPLETED);
         return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping(CATEGORIES_BY_SUPERMARKET)
+    public ResponseEntity<?> getCategoriesBySupermarket() {
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log.info(GenConstant.LOGGER_APP_INIT, "Method: " + methodName);
+        var categories = productService.getCategoriesBySupermarket();
+        if (categories.isEmpty()) {
+            log.warn(GenConstant.LOGGER_APP_FAIL, "Method: " + methodName);
+            return new ResponseEntity<>(Map.of("data", "Not found data"), HttpStatus.NOT_FOUND);
+        }
+        log.info(GenConstant.LOGGER_APP_COMPLETED, "Method: " + methodName);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 }
 
