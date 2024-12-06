@@ -34,7 +34,7 @@ public class LoggingFilter extends OncePerRequestFilter {
     private static final String STATUS_TEXT_LAYER = "Status text   : ";
     private static final String REQUEST_BODY_LAYER = "Request body  : ";
     private static final String RESPONSE_BODY_LAYER = "Response body : ";
-    private static final String SEPARATOR = "----------------------------------";
+    private static final String SEPARATOR = "------------------------------------------------------------------------------------------------------------------------";
     private static final String REQUEST_PREFIX = "Request: ";
     private static final String RESPONSE_PREFIX = "Response: ";
     private static final String REQUEST_ID = "request id=";
