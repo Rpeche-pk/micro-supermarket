@@ -10,5 +10,6 @@ public interface ProductService {
     List<ProductDto> getProductsByCategory(String category);
     List<ProductDto> getAllProducts();
     List<MarketCategoryDto> getCategoriesBySupermarket();
+    List<ProductDto> getBrandByCategory(String category, String supermarket);
 
 }

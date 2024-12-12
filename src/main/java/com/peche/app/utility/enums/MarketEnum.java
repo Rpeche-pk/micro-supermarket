@@ -7,9 +7,9 @@ import java.util.Arrays;
 @Getter
 public enum MarketEnum {
 
-    TOTTUS("Tottus"),
-    METRO("Metro"),
-    PLAZA_VEA("Plaza Vea");
+    TOTTUS("TOTTUS"),
+    METRO("METRO"),
+    PLAZA_VEA("PLAZAVEA");
 
     private final String market;
 

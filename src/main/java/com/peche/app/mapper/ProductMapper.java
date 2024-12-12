@@ -76,4 +76,10 @@ public interface ProductMapper {
     ProductDto mapToProductMetroDto(ProductMetroElastic productDto);
     ProductDto mapToProductTottusDto(ProductTottusElastic productDto);
 
+    @Mapping(target = "brand", source = "marca")
+    ProductDto mapToProductDto(ProductVea productDto);
+    @Mapping(target = "brand", source = "marca")
+    ProductDto mapToProductDto(ProductTottus productDto);
+    @Mapping(target = "brand", source = "marca")
+    ProductDto mapToProductDto(ProductMetro productDto);
 }

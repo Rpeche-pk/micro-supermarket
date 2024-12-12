@@ -19,9 +19,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static com.peche.app.constants.GenConstant.*;
+import static com.peche.app.utility.enums.MarketEnum.*;
 
 @Service
 @RequiredArgsConstructor
@@ -58,20 +60,6 @@ public class ProductImpl implements ProductService {
         log.info("{} - {}", LOGGER_SRV_COMPLETED_NAME, nameMethod);
         return allProducts;
     }
-
-//    @Override
-//    public List<ProductDto> searchProductsByName(String nameProduct, String brand) {
-//        String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-//
-//        if ((nameProduct == null || nameProduct.isBlank()) && (brand == null || brand.isBlank())) {
-//            log.warn("{} - {} - {}", LOGGER_SRV_FAIL_NAME_ERROR, nameMethod, "name or brand is null or empty");
-//            return List.of();
-//        }
-//
-//        List<ProductElastic> byCustomQuery = elasticRepository.findByCustomQuery(nameProduct, brand);
-//
-//        return byCustomQuery.stream().map(productMapper::mapToProductDto).toList();
-//    }
 
     @Override
     public List<ProductDto> getProductsByCategory(String category) {
@@ -134,7 +122,7 @@ public class ProductImpl implements ProductService {
     @Override
     public List<MarketCategoryDto> getCategoriesBySupermarket() {
         List<MarketCategoryDto> categories = new ArrayList<>();
-
+        log.info("{} - {}", LOGGER_SRV_INIT_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
         categories.addAll(metroRepository.findCategoryBySupermarket()
                 .stream()
                 .map(productMapper::mapToMarketCategoryDto)
@@ -147,8 +135,41 @@ public class ProductImpl implements ProductService {
                 .stream()
                 .map(productMapper::mapToMarketCategoryDto)
                 .toList());
-
+        log.info("{} - {}", LOGGER_SRV_COMPLETED_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
         return categories;
 
+    }
+
+    @Override
+    public List<ProductDto> getBrandByCategory(String category,String supermarket) {
+
+        if (Objects.isNull(category) || category.isBlank() && Objects.isNull(supermarket) || supermarket.isBlank()) {
+            log.warn(LOGGER_APP_FAIL_NAME_ERROR, Thread.currentThread().getStackTrace()[1].getMethodName(), EXCEPTION_ILLEGAL_NAME_CATEGORY);
+            throw new IllegalParameterException(EXCEPTION_ILLEGAL_BRAND, category);
+        }
+
+        List<ProductDto> categories = new ArrayList<>();
+
+        if (Objects.equals(supermarket, PLAZA_VEA.getMarket())) {
+            categories.addAll(plazaVeaRepository.findBrandByCategory(category)
+                    .stream()
+                    .map(productMapper::mapToProductDto)
+                    .toList());
+        }
+
+        if (Objects.equals(supermarket, TOTTUS.getMarket())) {
+            categories.addAll(tottusRepository.findBrandByCategory(category)
+                    .stream()
+                    .map(productMapper::mapToProductDto)
+                    .toList());
+        }
+
+        if (Objects.equals(supermarket, METRO.getMarket())) {
+            categories.addAll(metroRepository.findBrandByCategory(category)
+                    .stream()
+                    .map(productMapper::mapToProductDto)
+                    .toList());
+        }
+        return categories;
     }
 }

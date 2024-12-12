@@ -21,10 +21,10 @@ public class GenConstant {
     public static final String VERSION_API = "/v1/api";
     public static final String VERSION_API_PRODUCTS = VERSION_API + "/products";
     public static final String ALL_PRODUCTS = "/all/{supermarket}";
-    public static final String PRODUCT_BY_QUERY = "/";
     public static final String PRODUCT_BY_CATEGORY = "/category/{category}";
     public static final String ALL_PRODUCTS_SUPERMARKET = "/supermarket/";
     public static final String CATEGORIES_BY_SUPERMARKET = "/categories";
+    public static final String BRAND_BY_CATEGORY = "/brand/{supermarket}/{category}";
 
     public static final String API_ELASTIC_SEARCH = VERSION_API + "/elastic-data";
     public static final String API_URI_SYNC = "/sync";
@@ -36,6 +36,7 @@ public class GenConstant {
      * CONSTANTS FOR THE EXCEPTIONS
      */
     public static final String EXCEPTION_ILLEGAL_BRAND = "brand is number or empty";
+    public static final String EXCEPTION_ILLEGAL_NAME_CATEGORY = "category or supermarket is number or empty";
     public static final String EXCEPTION_ILLEGAL_PARAMETERS = "The product name or brand must not be empty or contain white spaces.";
     public static final String EXCEPTION_ILLEGAL_ARG = "name supermarket is number or empty";
     public static final String EXCEPTION_ILLEGAL_CATEGORY = "category is number or empty";
@@ -52,7 +53,7 @@ public class GenConstant {
     public static final String LOGGER_APP_COMPLETED_NAME = "[Controller] - << Execution completed >> --> : %1$s";
     public static final String LOGGER_APP_FAIL = "[Controller] - << Execution failed >> {}";
     public static final String LOGGER_APP_FAIL_NAME = "[Controller] - << Execution failed >> --> : %1$s";
-    public static final String LOGGER_APP_FAIL_NAME_ERROR = "[Controller] - << Execution failed >> --> : %1$s --> Message: %2$s";
+    public static final String LOGGER_APP_FAIL_NAME_ERROR = "[Controller] - << Execution failed >> --> : {} --> Message: {}";
     public static final String LOGGER_SRV_INIT = "[Services] - << Execution initialized >>";
     public static final String LOGGER_SRV_INIT_NAME = "[Services] - << Execution initialized >> --> : %1$s";
     public static final String LOGGER_SRV_COMPLETED = "[Services] - << Execution completed >>";
