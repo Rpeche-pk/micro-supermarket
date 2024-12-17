@@ -27,4 +27,8 @@ public interface ProductRepository<T, K> {
             "{ $replaceRoot: { newRoot: '$uniqueBrands' } }"
     })
     List<T> findBrandByCategory(String category);
+
+    @Query("{ 'marca': ?0, 'categoria': { $regex: ?1, $options: 'i' }, 'supermercado': { $regex: ?2, $options: 'i' } }")
+    List<T> findProductsByBrand(String brand, String category, String market);
+
 }

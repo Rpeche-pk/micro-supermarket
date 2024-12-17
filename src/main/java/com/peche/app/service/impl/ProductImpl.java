@@ -144,12 +144,13 @@ public class ProductImpl implements ProductService {
     public List<ProductDto> getBrandByCategory(String category,String supermarket) {
 
         if (Objects.isNull(category) || category.isBlank() && Objects.isNull(supermarket) || supermarket.isBlank()) {
-            log.warn(LOGGER_APP_FAIL_NAME_ERROR, Thread.currentThread().getStackTrace()[1].getMethodName(), EXCEPTION_ILLEGAL_NAME_CATEGORY);
+            log.error(LOGGER_SRV_FAIL_NAME, Thread.currentThread().getStackTrace()[1].getMethodName(), EXCEPTION_ILLEGAL_NAME_CATEGORY);
             throw new IllegalParameterException(EXCEPTION_ILLEGAL_BRAND, category);
         }
 
         List<ProductDto> categories = new ArrayList<>();
 
+        log.info("{} - {}", LOGGER_SRV_INIT_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
         if (Objects.equals(supermarket, PLAZA_VEA.getMarket())) {
             categories.addAll(plazaVeaRepository.findBrandByCategory(category)
                     .stream()
@@ -170,6 +171,23 @@ public class ProductImpl implements ProductService {
                     .map(productMapper::mapToProductDto)
                     .toList());
         }
+
+        log.info("{} - {}", LOGGER_SRV_COMPLETED_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
         return categories;
+    }
+
+    @Override
+    public List<ProductDto> getProductsByBrand(String brand, String category,String market) {
+        String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
+        if (Objects.isNull(brand) || brand.isBlank() && Objects.isNull(category) || category.isBlank()) {
+            log.error(LOGGER_SRV_FAIL_NAME,nameMethod,EXCEPTION_ILLEGAL_NAME_BRAND);
+            throw new IllegalParameterException(EXCEPTION_ILLEGAL_PARAMETERS, brand);
+        }
+
+        return plazaVeaRepository.findProductsByBrand(brand, category, market)
+                .stream()
+                .map(productMapper::mapToProduct)
+                .toList();
+
     }
 }

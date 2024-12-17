@@ -75,5 +75,18 @@ public class ProductController {
         return new ResponseEntity<>(brand, HttpStatus.OK);
     }
 
+    @GetMapping(SEARCH_PRODUCT_BY_BRAND)
+    public ResponseEntity<?> getProductsByBrand(@PathVariable String brand, @PathVariable String category, @RequestParam String market) {
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log.info(GenConstant.LOGGER_APP_INIT, "Method: " + methodName);
+        var products = productService.getProductsByBrand(brand, category,market);
+        if (products.isEmpty()) {
+            log.warn(GenConstant.LOGGER_APP_FAIL, "Method: " + methodName);
+            return new ResponseEntity<>(Map.of("data", "Not found data"), HttpStatus.NOT_FOUND);
+        }
+        log.info(GenConstant.LOGGER_APP_COMPLETED, "Method: " + methodName);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
 }
 

@@ -76,10 +76,34 @@ public interface ProductMapper {
     ProductDto mapToProductMetroDto(ProductMetroElastic productDto);
     ProductDto mapToProductTottusDto(ProductTottusElastic productDto);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "nombre")
     @Mapping(target = "brand", source = "marca")
+    @Mapping(target = "category", source = "categoria")
+    @Mapping(target = "price", source = "precio")
+    @Mapping(target = "supermarket", source = "supermercado")
+    @Mapping(target = "image", source = "imagen")
+    @Mapping(target = "url", source = "url")
+    @Mapping(target = "processDate", source = "fecha_proceso")
     ProductDto mapToProductDto(ProductVea productDto);
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "nombre")
     @Mapping(target = "brand", source = "marca")
+    @Mapping(target = "category", source = "categoria")
+    @Mapping(target = "price", source = "precio")
+    @Mapping(target = "supermarket", source = "supermercado")
+    @Mapping(target = "image", source = "imagen")
+    @Mapping(target = "url", source = "url")
+    @Mapping(target = "processDate", source = "fecha_proceso")
     ProductDto mapToProductDto(ProductTottus productDto);
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "nombre")
     @Mapping(target = "brand", source = "marca")
+    @Mapping(target = "category", source = "categoria")
+    @Mapping(target = "price", source = "precio")
+    @Mapping(target = "supermarket", source = "supermercado")
+    @Mapping(target = "image", source = "imagen")
+    @Mapping(target = "url", source = "url")
+    @Mapping(target = "processDate", source = "fecha_proceso")
     ProductDto mapToProductDto(ProductMetro productDto);
 }

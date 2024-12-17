@@ -25,6 +25,7 @@ public class GenConstant {
     public static final String ALL_PRODUCTS_SUPERMARKET = "/supermarket/";
     public static final String CATEGORIES_BY_SUPERMARKET = "/categories";
     public static final String BRAND_BY_CATEGORY = "/brand/{supermarket}/{category}";
+    public static final String SEARCH_PRODUCT_BY_BRAND= "/brand-category/{brand}/{category}";
 
     public static final String API_ELASTIC_SEARCH = VERSION_API + "/elastic-data";
     public static final String API_URI_SYNC = "/sync";
@@ -37,6 +38,7 @@ public class GenConstant {
      */
     public static final String EXCEPTION_ILLEGAL_BRAND = "brand is number or empty";
     public static final String EXCEPTION_ILLEGAL_NAME_CATEGORY = "category or supermarket is number or empty";
+    public static final String EXCEPTION_ILLEGAL_NAME_BRAND = "category or brand is number or empty";
     public static final String EXCEPTION_ILLEGAL_PARAMETERS = "The product name or brand must not be empty or contain white spaces.";
     public static final String EXCEPTION_ILLEGAL_ARG = "name supermarket is number or empty";
     public static final String EXCEPTION_ILLEGAL_CATEGORY = "category is number or empty";
@@ -59,13 +61,7 @@ public class GenConstant {
     public static final String LOGGER_SRV_COMPLETED = "[Services] - << Execution completed >>";
     public static final String LOGGER_SRV_COMPLETED_NAME = "[Services] - << Execution completed >> --> : %1$s";
     public static final String LOGGER_SRV_FAIL = "[Services] - << Execution failed >>";
-    public static final String LOGGER_SRV_FAIL_NAME = "[Services] - << Execution failed >> --> : %1$s";
+    public static final String LOGGER_SRV_FAIL_NAME = "[Services] - << Execution failed >> --> : {} --> Message: {}";
     public static final String LOGGER_SRV_FAIL_NAME_ERROR = "[Services] - << Execution failed >> --> : %1$s --> Message: %2$s";
-    public static final String LOGGER_REP_INIT = "[Repository] - << Execution initialized >>";
-    public static final String LOGGER_REP_INIT_NAME = "[Repository] - << Execution initialized >> --> : %1$s";
-    public static final String LOGGER_REP_COMP = "[Repository] - << Execution completed >>";
-    public static final String LOGGER_REP_COMPLETED_NAME = "[Repository] - << Execution completed >> --> : %1$s";
-    public static final String LOGGER_REP_FAIL = "[Repository] - << Execution failed >>";
-    public static final String LOGGER_REP_FAIL_NAME = "[Repository] - << Execution failed >> --> : %1$s";
-    public static final String LOGGER_REP_FAIL_NAME_ERROR = "[Repository] - << Execution failed >> --> : %1$s --> Message: %2$s";
+
 }
