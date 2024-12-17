@@ -180,14 +180,34 @@ public class ProductImpl implements ProductService {
     public List<ProductDto> getProductsByBrand(String brand, String category,String market) {
         String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
         if (Objects.isNull(brand) || brand.isBlank() && Objects.isNull(category) || category.isBlank()) {
-            log.error(LOGGER_SRV_FAIL_NAME,nameMethod,EXCEPTION_ILLEGAL_NAME_BRAND);
+            log.error(LOGGER_SRV_FAIL_NAME, nameMethod, EXCEPTION_ILLEGAL_NAME_BRAND);
             throw new IllegalParameterException(EXCEPTION_ILLEGAL_PARAMETERS, brand);
         }
+        log.info("{} - {}", LOGGER_SRV_INIT_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
 
-        return plazaVeaRepository.findProductsByBrand(brand, category, market)
-                .stream()
-                .map(productMapper::mapToProduct)
-                .toList();
+        List<ProductDto> productsByBrand = new ArrayList<>();
 
+        if (market.equalsIgnoreCase("Plaza Vea")) {
+            productsByBrand.addAll(plazaVeaRepository.findProductsByBrand(brand, category, market)
+                    .stream()
+                    .map(productMapper::mapToProduct)
+                    .toList());
+        }
+
+        if (market.equalsIgnoreCase("Tottus")) {
+            productsByBrand.addAll(tottusRepository.findProductsByBrand(brand, category, market)
+                    .stream()
+                    .map(productMapper::mapToProduct)
+                    .toList());
+        }
+
+        if (market.equalsIgnoreCase("Metro")) {
+            productsByBrand.addAll(metroRepository.findProductsByBrand(brand, category, market)
+                    .stream()
+                    .map(productMapper::mapToProduct)
+                    .toList());
+        }
+        log.info("{} - {}", LOGGER_SRV_COMPLETED_NAME, Thread.currentThread().getStackTrace()[1].getMethodName());
+        return productsByBrand;
     }
 }

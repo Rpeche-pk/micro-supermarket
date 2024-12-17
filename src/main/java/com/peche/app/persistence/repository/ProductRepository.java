@@ -28,7 +28,7 @@ public interface ProductRepository<T, K> {
     })
     List<T> findBrandByCategory(String category);
 
-    @Query("{ 'marca': ?0, 'categoria': { $regex: ?1, $options: 'i' }, 'supermercado': { $regex: ?2, $options: 'i' } }")
+    @Query("{ 'marca': { $regex: ?0, $options: 'i' }, 'categoria': { $regex: ?1, $options: 'i' }, 'supermercado': { $regex: ?2, $options: 'i' } }")
     List<T> findProductsByBrand(String brand, String category, String market);
 
 }
