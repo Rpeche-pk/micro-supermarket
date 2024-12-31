@@ -140,6 +140,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>maivibot-app</finalName>
     </build>
 
 </project>
