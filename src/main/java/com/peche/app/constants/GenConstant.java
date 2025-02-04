@@ -8,11 +8,11 @@ public class GenConstant {
      * CONSTANTS FOR THE NAME COLLECTIONS
      */
     public static final String COLLECTION_PLAZA_VEA = "PLAZAVEA";
-    public static final String COLLECTION_TOTTUS = "TOTTUSS";
+    public static final String COLLECTION_TOTTUS = "TOTTUS";
     public static final String COLLECTION_METRO = "METRO";
 
     public static final String COLLECTION_ELASTIC_PLAZA_VEA = "elastic_plazavea";
-    public static final String COLLECTION_ELASTIC_TOTTUS = "elastic_tottuss";
+    public static final String COLLECTION_ELASTIC_TOTTUS = "elastic_tottus";
     public static final String COLLECTION_ELASTIC_METRO = "elastic_metro";
 
     /**
