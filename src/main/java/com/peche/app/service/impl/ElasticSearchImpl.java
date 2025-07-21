@@ -35,9 +35,9 @@ public class ElasticSearchImpl implements ElasticSearchService {
         String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
         log.info("{} - {}", LOGGER_SRV_INIT, nameMethod);
 
-        validateSearchParams(nameProduct, brand);
+        //validateSearchParams(nameProduct, brand);
 
-        List<ProductVeaElastic> products = elasticVeaRepository.findByCustomQuery(nameProduct, brand);
+        List<ProductVeaElastic> products = elasticVeaRepository.findByCustomQuery(nameProduct.trim(), brand.trim());
         if (products.isEmpty()) {
             log.warn("{} - {}", LOGGER_SRV_FAIL, nameMethod);
             return Collections.emptyList();
@@ -52,9 +52,9 @@ public class ElasticSearchImpl implements ElasticSearchService {
         String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
         log.info("{} - {}", LOGGER_SRV_INIT, nameMethod);
 
-        validateSearchParams(nameProduct, brand);
+        //validateSearchParams(nameProduct, brand);
 
-        List<ProductTottusElastic> products = elasticTottusRepository.findByCustomQuery(nameProduct, brand);
+        List<ProductTottusElastic> products = elasticTottusRepository.findByCustomQuery(nameProduct.trim(), brand.trim());
         if (products.isEmpty()) {
             log.warn("{} - {}", LOGGER_SRV_FAIL, nameMethod);
             return Collections.emptyList();
@@ -69,9 +69,9 @@ public class ElasticSearchImpl implements ElasticSearchService {
         String nameMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
         log.info("{} - {}", LOGGER_SRV_INIT, nameMethod);
 
-        validateSearchParams(nameProduct, brand);
+        //validateSearchParams(nameProduct, brand);
 
-        List<ProductMetroElastic> products = elasticMetroRepository.findByCustomQuery(nameProduct, brand);
+        List<ProductMetroElastic> products = elasticMetroRepository.findByCustomQuery(nameProduct.trim(), brand.trim());
         if (products.isEmpty()) {
             log.warn("{} - {}", LOGGER_SRV_FAIL, nameMethod);
             return Collections.emptyList();
